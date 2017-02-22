@@ -1,7 +1,9 @@
 class User < ApplicationRecord
-	has_many :items
+	validates :email, presence: true
+	has_many :items dependent: :destroy
+	
 	User.all.each do |x|
-	x.name = x.name.capitalize
-	x.save
-end
+		x.name = x.name.capitalize
+		x.save
+	end
 end
